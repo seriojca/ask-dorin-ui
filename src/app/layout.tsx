@@ -20,9 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col min-h-screen max-h-screen">
             <Navbar />
-            <main className="flex flex-col flex-1 container items-center justify-between p-24">
+            <main className="-mt-[64px] pt-[64px] h-[calc(100% - 64px)] overflow-auto max-h-[calc(100% - 64px)] flex flex-col flex-1 w-full items-center justify-between">
               {children}
             </main>
           </div>
