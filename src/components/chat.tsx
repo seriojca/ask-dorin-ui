@@ -6,7 +6,10 @@ export default function Chat({ className }: ChatProps) {
       {/* Side panel  */}
       <div></div>
       {/* Dialog box */}
-      <div>{/* Chat  */}</div>
+      <div className="">
+        {/* Chat History  */}
+        {/* Chat Box */}
+      </div>
     </div>
   );
 }
