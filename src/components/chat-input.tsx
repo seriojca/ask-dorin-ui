@@ -13,7 +13,7 @@ interface blankNewMessage {
   timestamp: string;
 }
 
-export function ChatInput(props) {
+export function ChatInput() {
   const [input, setInput] = React.useState("");
   const inputLength = input.length;
   const addMessage = useChatStore((state) => state.addMessage);
