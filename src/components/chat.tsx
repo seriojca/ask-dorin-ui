@@ -13,7 +13,7 @@ export default function Chat({ className }: ChatProps) {
       {/* Side panel  */}
       {/*<div></div>*/}
       {/* Dialog box */}
-      <div ref={divRef}>
+      <div className={"py-12"}>
         <Dialog />
       </div>
     </React.Fragment>

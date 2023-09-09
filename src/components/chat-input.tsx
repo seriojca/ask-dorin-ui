@@ -3,10 +3,33 @@ import React from "react";
 import { Button } from "@/components/button";
 import { Check, Plus, Send } from "lucide-react";
 import { Input } from "@/components/Input/Input";
+import { useChatStore } from "@/store/useChatStore";
+import { uuid } from "uuidv4";
+
+interface blankNewMessage {
+  id: string;
+  content: string;
+  sender: string;
+  timestamp: string;
+}
 
 export function ChatInput(props) {
   const [input, setInput] = React.useState("");
   const inputLength = input.length;
+
+  const addMessage = useChatStore((state) => state.addMessage);
+
+  const handleSubmit = () => {
+    console.log("fucking shit");
+    const newMessage: blankNewMessage = {
+      id: uuid(),
+      content: input,
+      sender: "user",
+      timestamp: new Date().toISOString(),
+    };
+    addMessage(newMessage);
+    setInput("");
+  };
 
   return (
     <div
@@ -25,6 +48,7 @@ export function ChatInput(props) {
         />
         <Button
           type="submit"
+          onClick={() => handleSubmit()}
           variant="default"
           size="icon"
           disabled={inputLength === 0}
