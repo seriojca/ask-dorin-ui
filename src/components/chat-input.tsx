@@ -50,7 +50,7 @@ export function ChatInput() {
         "absolute border-t h-32 bottom-0 w-full flex items-center justify-center backdrop-blur-xl mr-4"
       }
     >
-      <div className="w-[80%] max-w-[1200px] flex items-center gap-4">
+      <div className="w-[80%] max-w-[860px] flex items-center gap-4">
         <Input
           id="message"
           placeholder="Type your message..."

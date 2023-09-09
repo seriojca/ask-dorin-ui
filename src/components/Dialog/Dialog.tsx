@@ -15,7 +15,7 @@ export function Dialog(props) {
   }, [chat]);
 
   return (
-    <div>
+    <div className={"w-[90%] max-w-[824px]"}>
       <div className="space-y-4 flex flex-col w-full py-4">
         {chat.map((message, index) => (
           <div
@@ -25,7 +25,7 @@ export function Dialog(props) {
               "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
               message.sender === "user"
                 ? "ml-auto bg-primary text-primary-foreground"
-                : "bg-muted"
+                : "bg-muted",
             )}
           >
             {message.content}
