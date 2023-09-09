@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/button";
 import { Check, Plus, Send } from "lucide-react";
 import { Input } from "@/components/Input/Input";
@@ -16,11 +16,17 @@ interface blankNewMessage {
 export function ChatInput(props) {
   const [input, setInput] = React.useState("");
   const inputLength = input.length;
-
   const addMessage = useChatStore((state) => state.addMessage);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleSubmit = () => {
-    console.log("fucking shit");
+    if (inputLength === 0) return;
+
     const newMessage: blankNewMessage = {
       id: uuid(),
       content: input,
@@ -28,6 +34,13 @@ export function ChatInput(props) {
       timestamp: new Date().toISOString(),
     };
     addMessage(newMessage);
+
+    document.getElementById("last_message_anchor").scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+
     setInput("");
   };
 
@@ -43,6 +56,7 @@ export function ChatInput(props) {
           placeholder="Type your message..."
           className="flex-1"
           autoComplete="off"
+          onKeyDown={(event) => handleKeyDown(event)}
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />
